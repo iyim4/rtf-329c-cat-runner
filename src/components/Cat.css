@@ -18,7 +18,7 @@
 }
 
 .jump {
-  animation: jump 0.3s linear;
+  animation: jump 0.5s linear;
 }
 
 @keyframes jump {
@@ -27,19 +27,19 @@
   }
 
   30% {
-    top: 178px;
+    top: 128px; /* Higher jump */
   }
 
   50% {
-    top: 148px;
+    top: 98px; /* Peak of the jump */
   }
 
-  80% {
-    top: 178px;
+  70% {
+    top: 128px; /* Start descending */
   }
 
   100% {
-    top: 198px;
+    top: 198px; /* Back to the ground */
   }
 }
 

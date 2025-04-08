@@ -1,12 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Cat.css";
 
+// variables that must match with Cat.css
 // cat_1 dimensions: 1658 x 800, using 55 x 27
 const cat_1_width = 55; 
 const cat_1_height = 27;
 // cucumber_1 dimensions: 1870 x 639, using 31 x 10
 const cucumber_1_width = 31; 
 const cucumber_1_height = 10;
+
+// timeout, in terms of seconds
+const timeout_css = 0.6;
 
 function Cat() {
   //ref to get 'cat' html element in js
@@ -22,7 +26,7 @@ function Cat() {
       catRef.current.classList.add("jump");
       setTimeout(() => {
         catRef.current.classList.remove("jump");
-      }, 300);
+      }, timeout_css * 1000);
     }
   };
 
@@ -30,33 +34,35 @@ function Cat() {
   //if yes, then game over.
   useEffect(() => {
     const isAlive = setInterval(() => {
-      // get current cat position
-      const catTop = parseInt(
-        getComputedStyle(catRef.current).getPropertyValue("top")
-      );
-      const catLeft = parseInt(
-        getComputedStyle(catRef.current).getPropertyValue("left")
-      );
+      if (catRef.current && cucumberRef.current) {
+        // get current cat position
+        const catTop = parseInt(
+          getComputedStyle(catRef.current).getPropertyValue("top")
+        );
+        const catLeft = parseInt(
+          getComputedStyle(catRef.current).getPropertyValue("left")
+        );
 
-      // get current cucumber position
-      let cucumberLeft = parseInt(
-        getComputedStyle(cucumberRef.current).getPropertyValue("left")
-      );
-      let cucumberTop = parseInt(
-        getComputedStyle(cucumberRef.current).getPropertyValue("top")
-      );
+        // get current cucumber position
+        let cucumberLeft = parseInt(
+          getComputedStyle(cucumberRef.current).getPropertyValue("left")
+        );
+        let cucumberTop = parseInt(
+          getComputedStyle(cucumberRef.current).getPropertyValue("top")
+        );
 
-      // detect collision
-      if (
-        cucumberLeft < catLeft + cat_1_width &&
-        cucumberLeft + cucumber_1_width > catLeft &&
-        cucumberTop < catTop + cat_1_height &&
-        cucumberTop + cucumber_1_height > catTop
-      ) {
-        alert("Game Over! Your Score: " + score);
-        setScore(0);
-      } else {
-        setScore(score + 1);
+        // detect collision
+        if (
+          cucumberLeft < catLeft + cat_1_width &&
+          cucumberLeft + cucumber_1_width > catLeft &&
+          cucumberTop < catTop + cat_1_height &&
+          cucumberTop + cucumber_1_height > catTop
+        ) {
+          alert("Game Over! Your Score: " + score);
+          setScore(0); // Reset score to 0
+        } else {
+          setScore(prevScore => prevScore + 1); // Increment score
+        }
       }
     }, 10);
 
