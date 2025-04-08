@@ -1,6 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Cat.css";
 
+// cat_1 dimensions: 1658 x 800, using 55 x 27
+const cat_1_width = 55; 
+const cat_1_height = 27;
+// cucumber_1 dimensions: 1870 x 639, using 31 x 10
+const cucumber_1_width = 31; 
+const cucumber_1_height = 10;
+
 function Cat() {
   //ref to get 'cat' html element in js
   const catRef = useRef();
@@ -11,9 +18,9 @@ function Cat() {
   //method to add 'jump' class every '300ms' as the class jump css has jumping animation of 0.3s(300ms).
   //so on each key press we need to add animation and remove animation
   const jump = () => {
-    if (!!catRef.current && catRef.current.classList != "jump") {
+    if (!!catRef.current && !catRef.current.classList.contains("jump")) {
       catRef.current.classList.add("jump");
-      setTimeout(function () {
+      setTimeout(() => {
         catRef.current.classList.remove("jump");
       }, 300);
     }
@@ -22,21 +29,31 @@ function Cat() {
   //useEffect to track whether cat position and cucumber position is intersecting
   //if yes, then game over.
   useEffect(() => {
-    const isAlive = setInterval(function () {
-      // get current cat Y position
+    const isAlive = setInterval(() => {
+      // get current cat position
       const catTop = parseInt(
         getComputedStyle(catRef.current).getPropertyValue("top")
       );
+      const catLeft = parseInt(
+        getComputedStyle(catRef.current).getPropertyValue("left")
+      );
 
-      // get current cucumber X position
+      // get current cucumber position
       let cucumberLeft = parseInt(
         getComputedStyle(cucumberRef.current).getPropertyValue("left")
       );
+      let cucumberTop = parseInt(
+        getComputedStyle(cucumberRef.current).getPropertyValue("top")
+      );
 
       // detect collision
-      if (cucumberLeft < 40 && cucumberLeft > 0 && catTop >= 140) {
-        // collision
-        alert("Game Over! Your Score : " + score);
+      if (
+        cucumberLeft < catLeft + cat_1_width &&
+        cucumberLeft + cucumber_1_width > catLeft &&
+        cucumberTop < catTop + cat_1_height &&
+        cucumberTop + cucumber_1_height > catTop
+      ) {
+        alert("Game Over! Your Score: " + score);
         setScore(0);
       } else {
         setScore(score + 1);
@@ -44,7 +61,7 @@ function Cat() {
     }, 10);
 
     return () => clearInterval(isAlive);
-  });
+  }, [score]);
 
   //hook to call jump method on any keypress
   useEffect(() => {
@@ -54,7 +71,7 @@ function Cat() {
 
   return (
     <div className="game">
-      Score : {score}
+      Score: {score}
       <div id="cat" ref={catRef}></div>
       <div id="cucumber" ref={cucumberRef}></div>
     </div>
