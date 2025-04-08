@@ -5,9 +5,9 @@ import "./Cat.css";
 // cat_1 dimensions: 1658 x 800, using 55 x 27
 const cat_1_width = 55; 
 const cat_1_height = 27;
-// cucumber_1 dimensions: 1870 x 639, using 31 x 10
-const cucumber_1_width = 31; 
-const cucumber_1_height = 10;
+// cucumber_1 dimensions: 1870 x 639, using 62 x 20
+const cucumber_1_width = 62; 
+const cucumber_1_height = 20;
 
 // timeout, in terms of seconds
 const timeout_css = 0.6;

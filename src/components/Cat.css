@@ -44,13 +44,13 @@
 }
 
 #cucumber {
-  width: 31px; /* New width */
-  height: 10px; /* New height */
+  width: 62px; /* New width */
+  height: 20px; /* New height */
   background-image: url(../../public/images/cucumber_1.png);
   background-size: contain; /* Maintain aspect ratio */
   background-repeat: no-repeat; /* Prevent the image from repeating */
   position: absolute; /* Use absolute positioning */
-  top: 215px; /* Adjust to ensure visibility */
+  top: 200px; /* Adjust to ensure visibility */
   left: 580px; /* Start position */
   animation: block 1s infinite linear;
 }
@@ -61,7 +61,7 @@
   }
 
   100% {
-    left: -31px; /* Ensure it moves completely off-screen */
+    left: -5px; /* Ensure it moves completely off-screen */
   }
 }
 
