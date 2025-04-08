@@ -2,7 +2,7 @@
 
 ## Interactive Project for RTF 329c
 
-Adapted from [this tutorial](https://www.codinn.dev/projects/react-dinosaur-game)
+An infinite runner adapted from [this tutorial](https://www.codinn.dev/projects/react-dinosaur-game) for the Chome Dino game
 
 ### Notes
 
