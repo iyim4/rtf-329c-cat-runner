@@ -13,14 +13,14 @@ const cucumber_1_height = 20;
 const timeout_css = 0.6;
 
 function Cat() {
-  //ref to get 'cat' html element in js
+  // ref to get 'cat' html element in js
   const catRef = useRef();
-  //ref to get 'cucumber' html element in js
+  // ref to get 'cucumber' html element in js
   const cucumberRef = useRef();
   const [score, setScore] = useState(0);
 
-  //method to add 'jump' class every '300ms' as the class jump css has jumping animation of 0.3s(300ms).
-  //so on each key press we need to add animation and remove animation
+  // method to add 'jump' class every '300ms' as the class jump css has jumping animation of 0.3s(300ms).
+  // so on each key press we need to add animation and remove animation
   const jump = () => {
     if (!!catRef.current && !catRef.current.classList.contains("jump")) {
       catRef.current.classList.add("jump");
@@ -30,8 +30,8 @@ function Cat() {
     }
   };
 
-  //useEffect to track whether cat position and cucumber position is intersecting
-  //if yes, then game over.
+  // useEffect to track whether cat position and cucumber position is intersecting
+  // if yes, then game over.
   useEffect(() => {
     const isAlive = setInterval(() => {
       if (catRef.current && cucumberRef.current) {
@@ -69,7 +69,7 @@ function Cat() {
     return () => clearInterval(isAlive);
   }, [score]);
 
-  //hook to call jump method on any keypress
+  // hook to call jump method on any keypress
   useEffect(() => {
     document.addEventListener("keydown", jump);
     return () => document.removeEventListener("keydown", jump);

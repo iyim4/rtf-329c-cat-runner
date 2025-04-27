@@ -1,7 +1,5 @@
 import React from 'react';
 import './Header.css';
-// import cat_logo from './public/cat_logo.svg'
-// import cat_logo_shock from './public/cat_logo_shock.svg'
 import cat_logo_happy from './public/images/cat_logo_happy.svg'
 import cat_sit from './public/images/cat_sit.gif'
 import cucumber_idle from './public/images/cucumber_idle.gif'
@@ -24,7 +22,7 @@ const Header = () => {
 
       <p className="header-description">
         Infinite running cat game inspired by the Chrome Dino game.
-        Avoid the Cucumbers!
+        Avoid the Cucumbers! Must have a keyboard to play.
       </p>
     </header>
   );
