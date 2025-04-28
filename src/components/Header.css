@@ -33,27 +33,3 @@
   border-radius: 20px;
 }
 
-
-#start-btn-con {
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-}
-
-#start-btn {
-  font-size: 150%;
-  font-weight: bold;
-  background-color: rgb(7,148,75);
-  color: white;
-  border-radius: 15px;
-  padding: 10px;
-  margin: 5px;
-  border: 5px solid white;
-
-}
-#start-btn:hover {
-  background-color: rgb(8, 184, 31);
-  border: 5px solid rgb(175, 235, 168);
-  cursor: pointer;
-}
-

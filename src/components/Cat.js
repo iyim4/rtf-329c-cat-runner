@@ -12,15 +12,17 @@ const cucumber_1_height = 20;
 // timeout, in terms of seconds. MUST MATCH IN CSS FILE
 const timeout_css = 0.6;
 
-const slack = 10; // (collision) decrease the cat's hitbox to make it easier to play
 
-const Cat = ({ setActiveGame, setGameOver, setPrevScore }) => {
+const Cat = ({ setActiveGame, setGameOver, setPrevScore, hard }) => {
   
   // ref to get 'cat' html element in js
   const catRef = useRef();
   // ref to get 'cucumber' html element in js
   const cucumberRef = useRef();
   const [score, setScore] = useState(0);
+
+  // (collision) decrease the cat's hitbox to make it easier to play
+  const slack = (hard) ? 0 : 10; // hard == false means easy mode
 
   // triggers jumping animation
   // adds 'jump' class every timeout_css seconds, matches time in css file

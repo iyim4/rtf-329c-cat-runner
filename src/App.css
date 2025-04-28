@@ -37,3 +37,39 @@
     transform: rotate(360deg);
   }
 }
+
+
+#start-btn-con {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.big-btn {
+  font-size: 150%;
+  font-weight: bold;
+}
+.sm-btn {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+.green-btn {
+  background-color: rgb(7,148,75);
+  color: white;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 5px;
+  border: 5px solid rgb(8, 184, 31);
+
+}
+.green-btn:hover {
+  background-color: rgb(12, 189, 36);
+  border: 5px solid rgb(121, 228, 109);
+  cursor: pointer;
+}
+.green-btn:active {
+  background-color: rgb(125, 225, 114);
+  border: 5px solid rgb(224, 255, 220);
+  cursor: pointer;
+}

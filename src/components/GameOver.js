@@ -25,6 +25,7 @@ const GameOver = ({ prevScore, highScore, setHighScore }) => {
                 Congratulations! You beat your previous high score!
               </h2>) 
               : ''}
+        <p>Can you do better? Click the play button to play again!</p>
       </div>
     </div>
   );
