@@ -7,7 +7,7 @@ const Difficulty = ({ hard, setHard }) => {
     return (
       <p>
         Too Challenging?
-        <button className='green-btn sm-btn' onClick={() => setHard(false)}>
+        <button className='green-btn-sm sm-btn' onClick={() => setHard(false)}>
           Turn Off Hard Mode
         </button>
       </p>
@@ -16,7 +16,7 @@ const Difficulty = ({ hard, setHard }) => {
     return (
       <p>
         Up for the challenge?  
-        <button className='green-btn sm-btn' onClick={() => setHard(true)}>
+        <button className='green-btn-sm sm-btn' onClick={() => setHard(true)}>
           Turn On Hard Mode
         </button>
       </p>

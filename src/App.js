@@ -33,8 +33,8 @@ const App = () => {
   return (
     <div className="App">
       <Header/>
-      <HighScore />
       <StartBtn />
+      <HighScore />
       {activeGame ? <Cat setActiveGame={setActiveGame} setGameOver={setGameOver} setPrevScore={setPrevScore} hard={hard} /> : '' }
       {gameOver ? <GameOver activeGame={activeGame} prevScore={prevScore} highScore={highScore} setHighScore={setHighScore} /> : ''}
       <Difficulty hard={hard} setHard={setHard} />
