@@ -9,20 +9,25 @@ const cat_1_height = 27;
 const cucumber_1_width = 62; 
 const cucumber_1_height = 20;
 
-// timeout, in terms of seconds
+// timeout, in terms of seconds. MUST MATCH IN CSS FILE
 const timeout_css = 0.6;
 
-function Cat() {
+const slack = 10; // (collision) decrease the cat's hitbox to make it easier to play
+
+const Cat = ({ setActiveGame, setGameOver, setPrevScore }) => {
+  
   // ref to get 'cat' html element in js
   const catRef = useRef();
   // ref to get 'cucumber' html element in js
   const cucumberRef = useRef();
   const [score, setScore] = useState(0);
 
-  // method to add 'jump' class every '300ms' as the class jump css has jumping animation of 0.3s(300ms).
-  // so on each key press we need to add animation and remove animation
+  // triggers jumping animation
+  // adds 'jump' class every timeout_css seconds, matches time in css file
   const jump = () => {
-    if (!!catRef.current && !catRef.current.classList.contains("jump")) {
+    console.log("catRef ", catRef);
+    // must have nullchecks
+    if (catRef.current && catRef.current.classList && !catRef.current.classList.contains("jump")) {
       catRef.current.classList.add("jump");
       setTimeout(() => {
         catRef.current.classList.remove("jump");
@@ -30,8 +35,6 @@ function Cat() {
     }
   };
 
-  // useEffect to track whether cat position and cucumber position is intersecting
-  // if yes, then game over.
   useEffect(() => {
     const isAlive = setInterval(() => {
       if (catRef.current && cucumberRef.current) {
@@ -42,7 +45,7 @@ function Cat() {
         const catLeft = parseInt(
           getComputedStyle(catRef.current).getPropertyValue("left")
         );
-
+  
         // get current cucumber position
         let cucumberLeft = parseInt(
           getComputedStyle(cucumberRef.current).getPropertyValue("left")
@@ -50,22 +53,25 @@ function Cat() {
         let cucumberTop = parseInt(
           getComputedStyle(cucumberRef.current).getPropertyValue("top")
         );
-
+  
         // detect collision
-        if (
-          cucumberLeft < catLeft + cat_1_width &&
-          cucumberLeft + cucumber_1_width > catLeft &&
-          cucumberTop < catTop + cat_1_height &&
-          cucumberTop + cucumber_1_height > catTop
+        if (                                             // collisions:
+          cucumberLeft < catLeft + cat_1_width - slack &&        // cat|cucumber pre-jump
+          cucumberLeft + cucumber_1_width > catLeft &&   // cucumber|cat post-jump (impossible?)
+          cucumberTop < catTop + cat_1_height - slack &&         // frac{cat}{cucumber} mid-jump
+          cucumberTop + cucumber_1_height > catTop       // frac{cucmber}{cat} tunnel? (impossible?)
+
         ) {
-          alert("Game Over! Your Score: " + score);
-          setScore(0); // Reset score to 0
+          // alert("Game Over! Your Score: " + score);
+          setActiveGame(false);
+          setGameOver(true);
+          setPrevScore(score);
         } else {
           setScore(prevScore => prevScore + 1); // Increment score
         }
       }
     }, 10);
-
+  
     return () => clearInterval(isAlive);
   }, [score]);
 
@@ -75,13 +81,17 @@ function Cat() {
     return () => document.removeEventListener("keydown", jump);
   }, []);
 
+
   return (
-    <div className="game">
-      Score: {score}
-      <div id="cat" ref={catRef}></div>
-      <div id="cucumber" ref={cucumberRef}></div>
-    </div>
+    <>
+      <div className="game">
+        Score: {score}
+        <div id="cat" ref={catRef}></div>
+        <div className="cucumber" ref={cucumberRef}></div>
+      </div>
+    </>
   );
 }
+
 
 export default Cat;
