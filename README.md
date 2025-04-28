@@ -16,5 +16,5 @@ Resources Used:
  * Software: VS Code, Powerpoint (for drawing), MS Copilot for adding features (for higher jump, different images, header), MS Clipchamp to convert images into gifs
  * Information: the above tutorial, MS Copilot
 
-Total Time Spent on this project: 8.5 hours 
+Total Time Spent on this project: 9.5 hours 
 
