@@ -2,14 +2,17 @@
 
 Visit [here!](https://iyim4.github.io/rtf-329c-cat-runner/)
 
-## Interactive Project for RTF 329c
+## Project for RTF 329c, Specialization: VIDEO GAME DEVELOPER
 
 An infinite runner adapted from [this tutorial](https://www.codinn.dev/projects/react-dinosaur-game) for the Chome Dino game
 
 ### Notes
 
-Resources Used
- * Software: VS Code, Powerpoint (for drawing), MS Copilot for adding features (for higher jump, different images, header)
+While I didn't expect to use MS PowerPoint, of all things, it fit my needs. I appreciated the alignment features, which Procreate doesn't have.
+
+Resources Used:
+ * Software: VS Code, Powerpoint (for drawing), MS Copilot for adding features (for higher jump, different images, header), MS Clipchamp to convert images into gifs
  * Information: the above tutorial, MS Copilot
 
-Time: 2.5 hours
+Total Time Spent on this project: 8.5 hours 
+
