@@ -4,7 +4,7 @@ import { useState } from 'react';
 const GameOver = ({ prevScore, highScore, setHighScore }) => {
 
   function Beat () {
-    console.log("beat is running, testing ", prevScore, ">=?", highScore);
+    // console.log("beat is running, testing ", prevScore, ">=?", highScore);
     // adjust previous highscore
     if (prevScore >= highScore) {
       setHighScore(prevScore);

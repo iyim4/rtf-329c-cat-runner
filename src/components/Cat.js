@@ -25,12 +25,14 @@ const Cat = ({ setActiveGame, setGameOver, setPrevScore }) => {
   // triggers jumping animation
   // adds 'jump' class every timeout_css seconds, matches time in css file
   const jump = () => {
-    console.log("catRef ", catRef);
-    // must have nullchecks
-    if (catRef.current && catRef.current.classList && !catRef.current.classList.contains("jump")) {
+    // console.log("catRef ", catRef);
+    if (catRef.current && !catRef.current.classList.contains("jump")) {
       catRef.current.classList.add("jump");
       setTimeout(() => {
-        catRef.current.classList.remove("jump");
+        // extra nullcheck
+        if (catRef.current) {
+          catRef.current.classList.remove("jump");
+        }
       }, timeout_css * 1000);
     }
   };
